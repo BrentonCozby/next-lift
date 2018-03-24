@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "What's my next lift? It's calculated based on your previous lifts.",
   "author": "Brenton Cozby",
+  "repository": "https://github.com/BrentonCozby/next-lift.git",
   "license": "MIT",
   "private": true,
   "scripts": {
