@@ -7,9 +7,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "browser-sync start --server 'dist' --files 'dist' --no-open --no-notify --reload-debounce 100",
-    "dev": "yarn setup-for-dev && npm-run-all --parallel start watch:*",
-    "build": "npm-run-all --sequential rmprod copy-to-dist minify:js minify:css prepend-banner hash-filenames minify:html",
+    "start": "yarn setup-for-dev && npm-run-all --parallel browsersync watch:*",
+    "build": "npm-run-all --sequential rmprod --parallel copy-to-dist minify:js minify:css --sequential prepend-banner hash-filenames minify:html",
+    "browsersync": "browser-sync start --server 'dist' --files 'dist' --no-open --no-notify --reload-debounce 100",
     "setup-for-dev": "npm-run-all --sequential rmprod copy-to-dist build:html",
     "build:html": "babel-node build-tools/ejs-to-html.js",
     "build:js": "webpack --mode development --debug",

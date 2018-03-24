@@ -51,6 +51,6 @@ module.exports = (env = {}) => {
                 utils: path.resolve(__dirname, 'src', 'utils')
             }
         },
-        devtool: isProduction ? 'source-map' : ''
+        devtool: isProduction ? '' : 'source-map'
     }
 }
