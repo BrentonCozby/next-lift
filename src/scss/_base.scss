@@ -1,0 +1,38 @@
+$main-font: "Helvetica Neue", "Calibri Light", "Roboto", sans-serif;
+
+* {
+    box-sizing: border-box;
+    position: relative;
+}
+
+html, p, a, li, span, button, input, textarea {
+    font-family: $main-font;
+    color: #666;
+    line-height: 1.6;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: .5px;
+}
+
+html,
+body {
+    min-height: 100%;
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #444;
+    line-height: 1.2;
+    font-weight: normal;
+}
+
+.lazyload,
+.lazyloading {
+    opacity: 0;
+}
+
+.lazyloaded {
+    opacity: 1;
+    // this transition needs to match the transition in @mixin appear in _helpers.scss
+    transition: opacity 300ms, transform 10000ms;
+}

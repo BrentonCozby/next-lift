@@ -11,12 +11,12 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="<%= SITE_TITLE %>">
     <meta property="og:description" content="<%= DESCRIPTION %>">
-    <meta property="og:image" content="<%= CARD_IMAGE %>"> <!-- generate image at https://realfavicongenerator.net/social/ -->
+    <meta property="og:image" content=""> <!-- generate image at https://realfavicongenerator.net/social/ -->
     <meta name="googlebot" content="noarchive">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="<%= SITE_TITLE %>">
     <meta name="twitter:description" content="<%= DESCRIPTION %>">
-    <meta name="twitter:image" content="<%= CARD_IMAGE %>"> <!-- generate image at https://realfavicongenerator.net/social/ -->
+    <meta name="twitter:image" content=""> <!-- generate image at https://realfavicongenerator.net/social/ -->
     <meta name="twitter:image:alt" content="<%= SITE_TITLE %>">
     <meta name="twitter:site" content="<%= SITE_URL %>">
     <meta name='author' content='<%= DEVELOPER_NAME %>. <%= DEVELOPER_URL %>'>
@@ -39,17 +39,17 @@
     <![endif]-->
 
 <% if (filenameMap) { %>
-    <link rel="stylesheet" href="<%= PP %><%= filenameMap['index.css'] %>">
-    <link rel="preload" href="<%= PP %><%= filenameMap['vendor.js'] %>" as="script">
-    <link rel="prefetch" href="<%= PP %><%= filenameMap['vendor.js'] %>">
-    <link rel="preload" href="<%= PP %><%= filenameMap['app.js'] %>" as="script">
-    <link rel="prefetch" href="<%= PP %><%= filenameMap['app.js'] %>">
+    <link rel="stylesheet" href="<%= PP %>/css/<%= filenameMap['index.css'] %>">
+    <link rel="preload" href="<%= PP %>/js/<%= filenameMap['vendor.js'] %>" as="script">
+    <link rel="prefetch" href="<%= PP %>/js/<%= filenameMap['vendor.js'] %>">
+    <link rel="preload" href="<%= PP %>/js/<%= filenameMap['app.js'] %>" as="script">
+    <link rel="prefetch" href="<%= PP %>/js/<%= filenameMap['app.js'] %>">
 <% } else { %>
-    <link rel="stylesheet" href="<%= PP %>index.css">
-    <link rel="preload" href="<%= PP %>vendor.js" as="script">
-    <link rel="prefetch" href="<%= PP %>vendor.js">
-    <link rel="preload" href="<%= PP %>bundle.js" as="script">
-    <link rel="prefetch" href="<%= PP %>bundle.js">
+    <link rel="stylesheet" href="<%= PP %>/css/index.css">
+    <link rel="preload" href="<%= PP %>/js/vendor.js" as="script">
+    <link rel="prefetch" href="<%= PP %>/js/vendor.js">
+    <link rel="preload" href="<%= PP %>/js/app.js" as="script">
+    <link rel="prefetch" href="<%= PP %>/js/app.js">
 <% } %>
 
     <script async src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>

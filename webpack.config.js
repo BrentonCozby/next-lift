@@ -1,5 +1,5 @@
 const path = require('path')
-const globals = require('./globals.js')
+const globals = require('./globals')
 const webpack = require('webpack')
 
 let isProduction
@@ -7,21 +7,21 @@ let isProduction
 module.exports = (env = {}) => {
 
     isProduction = env.production === true
-    
+
     return {
         entry: {
             vendor: ['hyperapp'],
             app: ['./src/index.js'],
         },
         output: {
-            filename: '[name].js',
-            path: path.resolve(__dirname, 'dist', 'js'),
+            filename: 'js/[name].js',
+            path: path.resolve(__dirname, 'dist'),
             publicPath: globals.PP,
         },
         module: {
             rules: [
                 {
-                    test: /\.jsx?$/,
+                    test: /\.(js|jsx)$/,
                     use: [{
                         loader: 'babel-loader',
                         options: {
@@ -43,10 +43,6 @@ module.exports = (env = {}) => {
                 DEVELOPER_NAME: globals.DEVELOPER_NAME,
                 DEVELOPER_URL: globals.DEVELOPER_URL,
                 GOOGLE_ANALYTICS_ID: globals.GOOGLE_ANALYTICS_ID
-            }),
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'vendor',
-                minChunks: Infinity
             })
         ],
         resolve: {

@@ -1,15 +1,15 @@
 const path = require('path')
 
-export const DEV_PATH = __dirname
-export const PP = isProduction ? '' : ''
-export const SITE_TITLE = 'Next Lift'
-export const DESCRIPTION = 'What\'s my next lift? It\'s calculated based on your previous lifts.'
-export const SITE_URL = 'https://brentoncozby.com'
-export const DEVELOPER_NAME = 'Brenton Cozby'
-export const DEVELOPER_URL = 'https://brentoncozby.com'
-export const GOOGLE_ANALYTICS_ID = ''
+module.exports.DEV_PATH = __dirname
+module.exports.PP = ''
+module.exports.SITE_TITLE = 'Next Lift'
+module.exports.DESCRIPTION = 'What\'s my next lift? It\'s calculated based on your previous lifts.'
+module.exports.SITE_URL = 'https://brentoncozby.com'
+module.exports.DEVELOPER_NAME = 'Brenton Cozby'
+module.exports.DEVELOPER_URL = 'https://brentoncozby.com'
+module.exports.GOOGLE_ANALYTICS_ID = ''
 
-export const Dir = {
+module.exports.Dir = {
     dist: path.resolve(__dirname, 'dist'),
     src: path.resolve(__dirname, 'src'),
     components: path.resolve(__dirname, 'src', 'components'),

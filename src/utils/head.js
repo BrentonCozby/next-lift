@@ -1,5 +1,9 @@
 function setTitle(text) {
-    document.title = text;
+    document.title = text
+
+    document.head.querySelector('meta[name="description"]').setAttribute('content', text)
+    document.head.querySelector('meta[name="twitter:description"]').setAttribute('content', text)
+    document.head.querySelector('meta[property="og:description"]').setAttribute('content', text)
 }
 
 function newElement({ tag, attributesMap }) {
@@ -13,14 +17,26 @@ function newElement({ tag, attributesMap }) {
 }
 
 function setMeta({ name, property, content }) {
-    const existingMeta = document.head.querySelector(`meta[${name || property}=${name}]`)
-    const propertyMeta = document.head.querySelector(`meta[property=${name}]`)
+    const nameMeta = document.head.querySelector(`meta[name=${name}]`)
+    const propertyMeta = document.head.querySelector(`meta[property=${property}]`)
 
     if (nameMeta) {
         nameMeta.setAttribute('content', content)
     } else {
         document.head.appendChild(newElement({
-            tag: name ? 'name' : property ? 'property' : '',
+            tag: 'name',
+            attributesMap: {
+                name,
+                content
+            }
+        }))
+    }
+
+    if (propertyMeta) {
+        propertyMeta.setAttribute('content', content)
+    } else {
+        document.head.appendChild(newElement({
+            tag: 'property',
             attributesMap: {
                 name,
                 content
@@ -29,5 +45,16 @@ function setMeta({ name, property, content }) {
     }
 }
 
-export {setTitle}
-export {setMeta}
+function setCardImage(imageUrl, altText) {
+    const og = document.head.querySelector('property[name="og:image"]')
+    const twitter = document.head.querySelector('meta[name="twitter:image"]')
+    const twitterAltText = document.head.querySelector('meta[name="twitter:image:alt"]')
+
+    og.setAttribute('content', imageUrl)
+    twitter.setAttribute('content', imageUrl)
+    twitterAltText.setAttribute('content', altText)
+}
+
+export { setTitle }
+export { setMeta }
+export { setCardImage }
