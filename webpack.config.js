@@ -64,7 +64,8 @@ module.exports = (env = {}) => {
             alias: {
                 components: path.resolve(__dirname, 'src', 'components'),
                 utils: path.resolve(__dirname, 'src', 'utils')
-            }
+            },
+            symlinks: false
         },
         devtool: isProduction ? '' : 'source-map'
     }
