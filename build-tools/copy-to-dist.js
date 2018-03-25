@@ -60,3 +60,10 @@ transformFiles(
     { destination: Dir.dist },
     copyDir
 )
+
+// favicons --> dist
+transformFiles(
+    Dir.favicons,
+    { destination: Dir.dist },
+    copyDir,
+)

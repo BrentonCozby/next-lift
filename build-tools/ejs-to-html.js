@@ -12,16 +12,14 @@ import {
     DESCRIPTION,
     DEVELOPER_NAME,
     DEVELOPER_URL,
-    GOOGLE_ANALYTICS_ID,
-    DEV_PATH
+    GOOGLE_ANALYTICS_ID
 } from '../globals'
 import transformFiles from './transform-files'
 
 // filenameMap used in views/partials with if statements to check if it exists
-let filenameMap = null
-if (fs.existsSync(resolve(DEV_PATH, 'filename-map.json'))) {
-    const fileContents = fs.readFileSync(resolve(DEV_PATH, 'filename-map.json'), 'utf-8')
-    filenameMap = JSON.parse(fileContents)
+let filenameMap
+if (fs.existsSync(resolve(Dir.dist, 'filename-map.json'))) {
+    filenameMap = JSON.parse(fs.readFileSync(resolve(Dir.dist, 'filename-map.json'), 'utf-8'))
 }
 
 function transformer({ filename, sourcePath, destinationPath }) {

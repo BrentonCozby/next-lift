@@ -14,6 +14,7 @@ module.exports.Dir = {
     src: path.resolve(__dirname, 'src'),
     components: path.resolve(__dirname, 'src', 'components'),
     static: path.resolve(__dirname, 'src', 'static'),
+    favicons: path.resolve(__dirname, 'src', 'favicons'),
     ejs: path.resolve(__dirname, 'src', 'ejs'),
     pages: path.resolve(__dirname, 'src', 'ejs', 'pages'),
     partials: path.resolve(__dirname, 'src', 'ejs', 'partials'),

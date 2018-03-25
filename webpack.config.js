@@ -11,12 +11,13 @@ module.exports = (env = {}) => {
     return {
         entry: {
             vendor: ['hyperapp'],
-            app: ['./src/index.js'],
+            app: ['./src/index.js']
         },
         output: {
-            filename: 'js/[name].js',
-            path: path.resolve(__dirname, 'dist'),
-            publicPath: globals.PP,
+            filename: isProduction ? '[name].[chunkhash].js' : '[name].js',
+            chunkFilename: isProduction ? '[name].[chunkhash].js' : '[name].js',
+            path: path.resolve(__dirname, 'dist', 'js'),
+            publicPath: `${globals.PP}/js/`
         },
         module: {
             rules: [
@@ -27,24 +28,38 @@ module.exports = (env = {}) => {
                         options: {
                             presets: [
                                 ['env', { modules: false }],
-                                'stage-0',
+                                'stage-0'
                             ]
                         }
-                    }]
+                    }],
+                    parser: {
+                        system: true
+                    }
                 }
             ]
         },
         plugins: [
             new webpack.DefinePlugin({
-                PP: isProduction ? '' : '',
-                SITE_TITLE: globals.SITE_TITLE,
-                DESCRIPTION: globals.DESCRIPTION,
-                SITE_URL: globals.SITE_URL,
-                DEVELOPER_NAME: globals.DEVELOPER_NAME,
-                DEVELOPER_URL: globals.DEVELOPER_URL,
-                GOOGLE_ANALYTICS_ID: globals.GOOGLE_ANALYTICS_ID
+                PP: JSON.stringify(''),
+                SITE_TITLE: JSON.stringify(globals.SITE_TITLE),
+                DESCRIPTION: JSON.stringify(globals.DESCRIPTION),
+                SITE_URL: JSON.stringify(globals.SITE_URL),
+                DEVELOPER_NAME: JSON.stringify(globals.DEVELOPER_NAME),
+                DEVELOPER_URL: JSON.stringify(globals.DEVELOPER_URL),
+                GOOGLE_ANALYTICS_ID: JSON.stringify(globals.GOOGLE_ANALYTICS_ID)
             })
         ],
+        optimization: {
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendor',
+                        chunks: 'all'
+                    }
+                }
+            }
+        },
         resolve: {
             alias: {
                 components: path.resolve(__dirname, 'src', 'components'),
